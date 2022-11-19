@@ -7,9 +7,17 @@ const MoviePage = () => {
     return { movieList: ["Die Hard", "Harry Potter"] };
   });
 
+  function handleAddMovie(newMovie) {
+    setMovieState((prevState) => {
+      return {
+        ...prevState,
+        movieList: prevState.movieList.concat([newMovie]),
+      };
+    });
+  }
   return (
     <div className="container col-12 col-md-6 my-3 border">
-      <AddMovie />
+      <AddMovie handleAddMovie={handleAddMovie} />
       <MovieList movieList={movieState.movieList} />
     </div>
   );
